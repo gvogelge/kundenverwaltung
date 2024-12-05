@@ -22,7 +22,7 @@ abstract class Person
     public String lieferePostanschrift()
     {
         return name + ", " + strasse + ", " + ort + ", " + plz;
-    };
+    }
     public void ergaenzeBestellung(double bestellwert)
     {
         anzahlBestellungen++;
