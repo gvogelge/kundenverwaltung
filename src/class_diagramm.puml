@@ -8,8 +8,9 @@ abstract class person{
     - anzahlBestellungen : int
     - bisherigesBestellvolumen : double
     {abstract} istPremiumkunde() : boolean
-    {abstract} lieferePostanschrift() : String
-    {abstract} ergaenzeBestellung() : void
+    + lieferePostanschrift() : String
+    + ergaenzeBestellung(double bestellwert) : void
+    {abstract} ermittleWichtigkeit() : double
 }
 
 class natuerlichePerson extends person{
