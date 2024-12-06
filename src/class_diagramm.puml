@@ -11,12 +11,14 @@ abstract class person{
     + lieferePostanschrift() : String
     + ergaenzeBestellung(double bestellwert) : void
     {abstract} ermittleWichtigkeit() : double
+    + getAnzahlBestellungen() : int
+    + getBisherigsBestellvolumen() : double
 }
 
 class natuerlichePerson extends person{
     - anrede : String
     - geschlecht : String
-    {private} bestellungZurueckgeben() : void
+    + bestellungZurueckgeben() : void
 }
 
 class juristischePerson extends person{
