@@ -3,6 +3,7 @@
 abstract class person{
     - name : String
     - strasse : String
+    - hausnummer : String
     - ort : String
     - plz : String
     - anzahlBestellungen : int
@@ -11,6 +12,11 @@ abstract class person{
     + lieferePostanschrift() : String
     + ergaenzeBestellung(double bestellwert) : void
     {abstract} ermittleWichtigkeit() : double
+    + getName() : String
+    + getStrasse() : String
+    + getHausnummer() : String
+    + getOrt() : String
+    + getPlz() : String
     + getAnzahlBestellungen() : int
     + getBisherigsBestellvolumen() : double
 }
@@ -19,11 +25,16 @@ class natuerlichePerson extends person{
     - anrede : String
     - geschlecht : String
     + bestellungZurueckgeben() : void
+    + istPremiumkunde() : boolean
+    + ermittleWichtigkeit() : boolean
 }
 
 class juristischePerson extends person{
-    - rechtform : String
+    - rechtsform : String
     - istKapitalgesellschaft : boolean
+    + istPremiumkunde() : boolean
+    + ermittleWichtigkeit() : double
+    + lieferePostanschrift() : String
 }
 
 @enduml
