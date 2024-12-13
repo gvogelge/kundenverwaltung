@@ -1,6 +1,6 @@
 @startuml kundenverwaltungssystem
 
-abstract class person{
+abstract class Person{
     - id : int
     - name : String
     - strasse : String
@@ -13,7 +13,7 @@ abstract class person{
     {abstract} ermittleWichtigkeit() : double
     {abstract} datenAusgeben() : void
     + lieferePostanschrift() : String
-    + ergaenzeBestellung(double bestellwert) : void
+    + ergaenzeBestellung(bestellnummer : String, bestellwert : double) : void
     + getId() : int
     + getName() : String
     + getStrasse() : String
@@ -21,13 +21,13 @@ abstract class person{
     + getOrt() : String
     + getPlz() : String
     + getAnzahlBestellungen() : int
-    + getBisherigsBestellvolumen() : double
+    + getBisherigesBestellvolumen() : double
 }
 
-class natuerlichePerson extends person{
+class NatuerlichePerson extends Person{
     - anrede : String
     - geschlecht : char
-    + bestellungZurueckgeben() : void
+    + bestellungZurueckgeben(bestellNummer : String, bestellWert : double) : void
     + istPremiumkunde() : boolean
     + ermittleWichtigkeit() : double
     + datenAusgeben() : void
@@ -35,7 +35,7 @@ class natuerlichePerson extends person{
     + getGeschlecht() : char
 }
 
-class juristischePerson extends person{
+class JuristischePerson extends Person{
     - rechtsform : String
     - istKapitalgesellschaft : boolean
     + istPremiumkunde() : boolean
@@ -45,5 +45,16 @@ class juristischePerson extends person{
     + getRechtsform() : String
     + getIstKapitalgesellschaft() : boolean
 }
+
+class KundenVerwaltungsSystem {
+    + {static} main(args: String[]) : void
+    - erstelleTop10(kundenliste : <? extends Person>) : void
+    - top10Ausgeben(kundenliste : ArrayList<? extends Person>) : void
+    - sortiereKunden(kundenliste : ArrayList<Person>) : void
+    - testStarten(testName : String) : void
+    - testBeenden(testName : String) :void
+}
+
+KundenVerwaltungsSystem o-- Person
 
 @enduml

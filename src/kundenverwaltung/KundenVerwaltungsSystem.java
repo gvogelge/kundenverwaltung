@@ -78,13 +78,13 @@ public class KundenVerwaltungsSystem
         }
     }
 
-    public void testStarten(String testName)
+    private void testStarten(String testName)
     {
         System.out.println("\n******************************************");
         System.out.println("TEST START " + testName);
         System.out.println();
     }
-    public void testBeenden(String testName)
+    private void testBeenden(String testName)
     {
         System.out.println();
         System.out.println("TEST ENDE " + testName);
