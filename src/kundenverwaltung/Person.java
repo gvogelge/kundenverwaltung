@@ -9,6 +9,7 @@ package kundenverwaltung;
  */
 abstract class Person
 {
+    private int id;
     private String name;
     private String strasse;
     private String hausnummer;
@@ -30,15 +31,19 @@ abstract class Person
      * @param anzahlBestellungen     Die Anzahl der bisherigen Bestellungen.
      * @param bisherigesBestellvolumen Der Gesamtwert der bisherigen Bestellungen.
      */
-    public Person(String name, String strasse, String hausnummer, String ort, String plz, int anzahlBestellungen, double bisherigesBestellvolumen)
+    public Person(int id, String name, String strasse, String hausnummer, String ort, String plz, int anzahlBestellungen, double bisherigesBestellvolumen)
     {
+        this.id = id;
         this.name = name;
         this.strasse = strasse;
         this.hausnummer = hausnummer;
         this.ort = ort;
         this.plz = plz;
         this.anzahlBestellungen = anzahlBestellungen;
+        this.bisherigesBestellvolumen = bisherigesBestellvolumen;
     }
+
+    abstract void datenAusgeben();
 
     /**
      * Abstrakte Methode, die überprüft, ob eine Person ein Premiumkunde ist.
@@ -62,6 +67,7 @@ abstract class Person
      */
     public String lieferePostanschrift()
     {
+        System.out.println("Liefere Postanschrift.\n");
         return name +"\n"+ strasse +" "+ hausnummer +"\n"+ ort +" "+ plz;
     }
 
@@ -73,10 +79,13 @@ abstract class Person
      *
      * @param bestellwert Der Wert der neuen Bestellung.
      */
-    public void ergaenzeBestellung(double bestellwert)
+    public void ergaenzeBestellung(String bestellnummer, double bestellwert)
     {
+        System.out.println("Addiere eine Bestellung.");
         anzahlBestellungen++;
+        System.out.println("Addiere uebergebenen Bestellwert: " + bestellwert);
         bisherigesBestellvolumen += bestellwert;
+        System.out.println("Bestellung Nr. " +bestellnummer+ " erfolgreich hinzugefuegt.");
     }
 
     /**
@@ -89,6 +98,7 @@ abstract class Person
      */
     abstract double ermittleWichtigkeit();
 
+    // Getter
     public int getAnzahlBestellungen()
     {
         return anzahlBestellungen;
@@ -97,6 +107,11 @@ abstract class Person
     public double getBisherigesBestellvolumen()
     {
         return bisherigesBestellvolumen;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getName()
@@ -122,5 +137,16 @@ abstract class Person
     public String getHausnummer()
     {
         return hausnummer;
+    }
+
+    //Setter
+    public void setAnzahlBestellungen(int anzahlBestellungen)
+    {
+        this.anzahlBestellungen = anzahlBestellungen;
+    }
+
+    public void setBisherigesBestellvolumen(double bisherigesBestellvolumen)
+    {
+        this.bisherigesBestellvolumen = bisherigesBestellvolumen;
     }
 }

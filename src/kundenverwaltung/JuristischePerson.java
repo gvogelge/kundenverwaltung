@@ -20,11 +20,29 @@ public class JuristischePerson extends Person
      * @param rechtsform               Die Rechtsform der Firma (z. B. "GmbH", "AG").
      * @param istKapitalgesellschaft   Gibt an, ob die Firma eine Kapitalgesellschaft ist (true/false).
      */
-    public JuristischePerson(String name, String strasse, String hausnummer, String ort, String plz, int anzahlBestellungen, double bisherigesBestellvolumen, String rechtsform, boolean istKapitalgesellschaft)
+    public JuristischePerson(int id, String name, String strasse, String hausnummer, String ort, String plz, int anzahlBestellungen, double bisherigesBestellvolumen, String rechtsform, boolean istKapitalgesellschaft)
     {
-        super(name, strasse, hausnummer, ort, plz, anzahlBestellungen, bisherigesBestellvolumen);
+        super(id, name, strasse, hausnummer, ort, plz, anzahlBestellungen, bisherigesBestellvolumen);
         this.rechtsform = rechtsform;
         this.istKapitalgesellschaft = istKapitalgesellschaft;
+    }
+
+    public void datenAusgeben() {
+        System.out.println("+------+----------------------+------------+---------------------------+---------+-------------------+-------------+-------------+----------------+----------------+");
+        System.out.println("| ID   | Name                 | Rechtsform | Straße                    | Hausnr. | Ort               | PLZ         | Bestellungen| Bestellvolumen | Kapitalgesell. |");
+        System.out.println("+------+----------------------+------------+---------------------------+---------+-------------------+-------------+-------------+----------------+----------------+");
+        System.out.printf("| %-4d | %-20s | %-10s | %-25s | %-7s | %-17s | %-11s | %-11d | %-14.2f | %-14s |%n",
+                getId(),
+                getName(),
+                getRechtsform(),
+                getStrasse(),
+                getHausnummer(),
+                getOrt(),
+                getPlz(),
+                getAnzahlBestellungen(),
+                getBisherigesBestellvolumen(),
+                getIstKapitalgesellschaft() ? "Ja" : "Nein");
+        System.out.println("+------+----------------------+------------+---------------------------+---------+-------------------+-------------+-------------+----------------+----------------+");
     }
 
     /**
@@ -38,7 +56,17 @@ public class JuristischePerson extends Person
      */
     public boolean istPremiumkunde()
     {
-        return istKapitalgesellschaft && getBisherigesBestellvolumen() > 5000;
+        System.out.println("Pruefe ob Kunde Kapitalgesellschaft ist und das Bestellvolumen min. 5000 betraegt.");
+        boolean istPremiumkunde = istKapitalgesellschaft && getBisherigesBestellvolumen() >= 5000;
+        if(istPremiumkunde)
+        {
+            System.out.println(getName() +"\s"+ getRechtsform() + " ist Premiumkunde.");
+        }
+        else
+        {
+            System.out.println(getName() +"\s"+ getRechtsform() + " ist kein Premiumkunde.");
+        }
+        return istPremiumkunde;
     }
 
     /**
@@ -68,6 +96,18 @@ public class JuristischePerson extends Person
     @Override
     public String lieferePostanschrift()
     {
+        System.out.println("Liefere Postanschrift.\n");
         return getName() +" "+ rechtsform +"\n"+ getStrasse() +" "+ getHausnummer() +"\n"+ getPlz() +" "+ getOrt();
+    }
+
+    //Getter
+    public String getRechtsform()
+    {
+        return rechtsform;
+    }
+
+    public boolean getIstKapitalgesellschaft()
+    {
+        return istKapitalgesellschaft;
     }
 }

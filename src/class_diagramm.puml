@@ -1,6 +1,7 @@
 @startuml kundenverwaltungssystem
 
 abstract class person{
+    - id : int
     - name : String
     - strasse : String
     - hausnummer : String
@@ -9,9 +10,11 @@ abstract class person{
     - anzahlBestellungen : int
     - bisherigesBestellvolumen : double
     {abstract} istPremiumkunde() : boolean
+    {abstract} ermittleWichtigkeit() : double
+    {abstract} datenAusgeben() : void
     + lieferePostanschrift() : String
     + ergaenzeBestellung(double bestellwert) : void
-    {abstract} ermittleWichtigkeit() : double
+    + getId() : int
     + getName() : String
     + getStrasse() : String
     + getHausnummer() : String
@@ -23,10 +26,13 @@ abstract class person{
 
 class natuerlichePerson extends person{
     - anrede : String
-    - geschlecht : String
+    - geschlecht : char
     + bestellungZurueckgeben() : void
     + istPremiumkunde() : boolean
-    + ermittleWichtigkeit() : boolean
+    + ermittleWichtigkeit() : double
+    + datenAusgeben() : void
+    + getAnrede() : String
+    + getGeschlecht() : char
 }
 
 class juristischePerson extends person{
@@ -35,6 +41,9 @@ class juristischePerson extends person{
     + istPremiumkunde() : boolean
     + ermittleWichtigkeit() : double
     + lieferePostanschrift() : String
+    + datenAusgeben() : void
+    + getRechtsform() : String
+    + getIstKapitalgesellschaft() : boolean
 }
 
 @enduml
