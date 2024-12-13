@@ -10,6 +10,7 @@ public class JuristischePerson extends Person
      *
      * Initialisiert die Attribute einer juristischen Person einschließlich der allgemeinen Attribute aus der Basisklasse Person.
      *
+     * @param id                       Die ID einer juristischen Person.
      * @param name                     Der Name der juristischen Person (z. B. "Firma XY").
      * @param strasse                  Die Straße, in der sich die Firma befindet.
      * @param hausnummer               Die Hausnummer der Adresse.
@@ -26,7 +27,12 @@ public class JuristischePerson extends Person
         this.rechtsform = rechtsform;
         this.istKapitalgesellschaft = istKapitalgesellschaft;
     }
-
+    /**
+     * Gibt die Daten der juristischen Person in tabellarischer Form aus.
+     *
+     * Die Methode formatiert die Daten der juristischen Person ähnlich wie in einer SQL-Tabelle
+     * und gibt diese auf der Konsole aus. Jede Spalte repräsentiert ein Attribut der Firma.
+     */
     public void datenAusgeben() {
         System.out.println("+------+----------------------+------------+---------------------------+---------+-------------------+-------------+-------------+----------------+----------------+");
         System.out.println("| ID   | Name                 | Rechtsform | Straße                    | Hausnr. | Ort               | PLZ         | Bestellungen| Bestellvolumen | Kapitalgesell. |");

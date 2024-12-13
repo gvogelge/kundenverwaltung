@@ -4,6 +4,15 @@ import java.util.ArrayList;
 
 public class KundenVerwaltungsSystem
 {
+    /**
+     * Erstellt eine Liste der Top 10 Kunden basierend auf ihrer Wichtigkeit.
+     *
+     * Diese Methode nimmt eine Liste von Personen (oder deren Unterklassen) als Eingabe,
+     * berechnet für jede Person(Kunden) einen Wichtigkeitswert, sortiert die Liste nach
+     * diesem Wert und gibt die 10 wichtigsten Personen(Kunden) aus.
+     *
+     * @param kundenliste Eine Liste von Objekten vom Typ Person oder deren Unterklassen.
+     */
     private void erstelleTop10(ArrayList<? extends Person> kundenliste)
     {
         ArrayList<Person> kopierteListe = new ArrayList<>(kundenliste);
@@ -14,28 +23,54 @@ public class KundenVerwaltungsSystem
         System.out.println();
         top10Ausgeben(kopierteListe);
     }
-
+    /**
+     * Gibt die Top 10 Personen(Kunden) aus einer Liste auf der Konsole aus.
+     *
+     * Die Methode gibt maximal 10 Personen(Kunden) mit ihren Plätzen, Namen und Wichtigkeitswerten
+     * in einer Tabellenform aus. Wenn die Liste weniger als 10 Personen(Kunden) enthält, werden
+     * alle vorhandenen Personen(Kunden) ausgegeben.
+     *
+     * @param kundenliste Eine Liste von Objekten vom Typ Person oder deren Unterklassen.
+     */
     private void top10Ausgeben(ArrayList<? extends Person> kundenliste)
     {
-        int size = Math.min(kundenliste.size(), 10); // int size wird maximal 10 zugeordnet
+        int size = Math.min(kundenliste.size(), 10); // "size" wird auf 10 oder die Anzahl der Kunden in der Liste gesetzt.
+        // Überschrift der Tabelle ausgeben.
         System.out.println("Platz | Name                     | Wichtigkeit");
         System.out.println("----------------------------------------------");
+        // Schleife für die Ausgabe der Top-Kunden bis zur maximalen Anzahl (size).
         for (int i = 0; i < size; i++)
         {
-            System.out.printf("%-5d | %-24s | %.2f%n", i+1, kundenliste.get(i).getName(), kundenliste.get(i).ermittleWichtigkeit());
+            System.out.printf("%-5d | %-24s | %.2f%n",
+                    i+1, // Platz: Start bei 1, daher i+1
+                    kundenliste.get(i).getName(), // Name des Kunden
+                    kundenliste.get(i).ermittleWichtigkeit() // Wichtigkeitswert des Kunden
+            );
         }
     }
-
+    /**
+     * Sortiert eine Kundenliste basierend auf ihrer Wichtigkeit in absteigender Reihenfolge.
+     *
+     * Die Methode verwendet den Bubble-Sort-Algorithmus, um die Liste so zu sortieren,
+     * dass Kunden mit höherer Wichtigkeit weiter vorne in der Liste stehen.
+     *
+     * @param kundenliste Die zu sortierende Liste von Kunden (Objekte vom Typ Person).
+     */
     private void sortiereKunden(ArrayList<Person> kundenliste)
     {
+        // Äußere Schleife: Wiederhole den Sortiervorgang für jedes Element in der Liste.
         for (int i = 0; i < kundenliste.size(); i++)
         {
+            // Innere Schleife: Vergleiche benachbarte Elemente und tausche sie, falls notwendig.
             for (int j = 0; j < kundenliste.size()-1; j++)
             {
+                // Hole die beiden Kunden an den Indizes j und j+1.
                 Person kundeA = kundenliste.get(j);
                 Person kundeB = kundenliste.get(j+1);
+                // Vergleiche die Wichtigkeit von kundeA und kundeB.
                 if(kundeA.ermittleWichtigkeit() < kundeB.ermittleWichtigkeit())
                 {
+                    // Tausche die Positionen von kundeA und kundeB, wenn kundeB wichtiger ist.
                     kundenliste.set(j+1, kundeA);
                     kundenliste.set(j, kundeB);
                 }

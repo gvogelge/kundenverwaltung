@@ -11,6 +11,7 @@ public class NatuerlichePerson extends Person
      * Initialisiert eine natürliche Person mit allen relevanten Attributen.
      * Verwendet den Konstruktor der Superklasse Person zur Initialisierung allgemeiner Eigenschaften.
      *
+     * @param id                     Die ID einer natuerlichen Person.
      * @param name                   Der Name der Person.
      * @param strasse                Die Straße, in der die Person wohnt.
      * @param hausnummer             Die Hausnummer der Adresse.
@@ -28,6 +29,12 @@ public class NatuerlichePerson extends Person
         this.anrede = anrede;
     }
 
+    /**
+     * Gibt die Daten der natürlichen Person in tabellarischer Form aus.
+     *
+     * Die Methode formatiert die Daten der natürlichen Person ähnlich wie in einer SQL-Tabelle
+     * und gibt diese auf der Konsole aus. Jede Spalte repräsentiert ein Attribut der Person.
+     */
     public void datenAusgeben() {
         System.out.println("+------+--------+----------------------+--------+---------------------------+--------+-------------------+-------------+--------------+----------------+");
         System.out.println("| ID   | Anrede | Name                 | Gesch. | Straße                    | Hausnr.| Ort               | PLZ         | Bestellungen | Bestellvolumen |");
@@ -87,6 +94,16 @@ public class NatuerlichePerson extends Person
         return getBisherigesBestellvolumen() + getAnzahlBestellungen() * 10;
     }
 
+    /**
+     * Verarbeitet die Rückgabe einer Bestellung.
+     *
+     * Die Methode reduziert die Anzahl der Bestellungen und das bisherige Bestellvolumen
+     * um die übergebenen Werte. Zusätzlich wird eine Bestätigungsmeldung ausgegeben,
+     * dass die Bestellung erfolgreich zurückgegeben wurde.
+     *
+     * @param bestellNummer Die Nummer der zurückgegebenen Bestellung.
+     * @param bestellWert   Der Wert der zurückgegebenen Bestellung, der vom Bestellvolumen abgezogen wird.
+     */
     public void bestellungZurueckgeben(String bestellNummer, double bestellWert)
     {
         System.out.println("Subtrahiere eine Bestellung.");
