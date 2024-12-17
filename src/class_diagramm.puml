@@ -9,6 +9,7 @@ abstract class Person{
     - plz : String
     - anzahlBestellungen : int
     - bisherigesBestellvolumen : double
+    + Person(id : int, name : String, strasse : String, hausnummer : String, ort : String, plz : String, anzahlBestellungen : int, bisherigesBestellvolumen : double)
     {abstract} istPremiumkunde() : boolean
     {abstract} ermittleWichtigkeit() : double
     {abstract} datenAusgeben() : void
@@ -27,6 +28,7 @@ abstract class Person{
 class NatuerlichePerson extends Person{
     - anrede : String
     - geschlecht : char
+    + NatuerlichePerson(id : int, name : String, strasse : String, hausnummer : String, ort : String, plz : String, anzahlBestellungen : int, bisherigesBestellvolumen : double, geschlecht : char, anrede : String)
     + bestellungZurueckgeben(bestellNummer : String, bestellWert : double) : void
     + istPremiumkunde() : boolean
     + ermittleWichtigkeit() : double
@@ -38,6 +40,7 @@ class NatuerlichePerson extends Person{
 class JuristischePerson extends Person{
     - rechtsform : String
     - istKapitalgesellschaft : boolean
+    + JuristischePerson(id : int, name : String, strasse : String, hausnummer : String, ort : String, plz : String, anzahlBestellungen : int, bisherigesBestellvolumen : double, rechtsform : String, istKapitalgesellschaft : boolean)
     + istPremiumkunde() : boolean
     + ermittleWichtigkeit() : double
     + lieferePostanschrift() : String
