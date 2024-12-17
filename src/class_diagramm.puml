@@ -23,6 +23,8 @@ abstract class Person{
     + getPlz() : String
     + getAnzahlBestellungen() : int
     + getBisherigesBestellvolumen() : double
+    + setAnzahlBestellungen(int anzahlBestellungen) : void
+    + setBisherigesBestellvolumen(double bisherigesBestellvolumen) : void
 }
 
 class NatuerlichePerson extends Person{
